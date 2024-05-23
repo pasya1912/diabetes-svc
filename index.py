@@ -210,8 +210,15 @@ if(is_trained):
         st.markdown(f'''
                     Aplikasi ini mampu memprediksi apakah seseorang menderita penyakit diabetes atau tidak berdasarkan data yang diinputkan dengan tingkat akurasi sebesar  :green[{accuracy*100}%]
                     ''')
+        #check query params for password and get from config yoml
+
+        if 'password' in st.query_params:
+            if(st.query_params['password'] == st.secrets['retrain_pw']):
+                st.session_state.button_status = 'button_active'
+                
+
         if 'button_status' not in st.session_state:
-            st.session_state.button_status = 'button_active'
+            st.session_state.button_status = 'no_button'
 
         # Button to start retraining the model
         if(st.session_state.button_status == 'button_active'):
