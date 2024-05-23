@@ -245,8 +245,8 @@ if(is_trained):
     glukosa = st.number_input('Glukosa', min_value=0, max_value=200, value=0)
     tekanan_darah = st.number_input('Tekanan Darah', min_value=0, max_value=200, value=0)
     ketebalan_kulit = st.number_input('Ketebalan Kulit', min_value=0, max_value=200, value=0)
-    insulin = st.number_input('Insulin', min_value=0, max_value=1000, value=0)
-    bmi = st.number_input('BMI', min_value=0.0, max_value=1000, value=0.0)
+    insulin = st.number_input('Insulin', min_value=0, value=0)
+    bmi = st.number_input('BMI', min_value=0.0, value=0.0)
     dpf = st.number_input('DiabetesPedigreeFunction', min_value=0.000, max_value=3, value=0.000, format="%.3f")
     umur = st.number_input('Umur', min_value=21, max_value=100, value=21)
 
