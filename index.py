@@ -181,6 +181,7 @@ def train():
 
     # Hitung akurasi model
     accuracy = accuracy_score(y_test, predictions)
+
     #save model, accuracy, and scaler into one object then save it to disk
     trained_model = {'model':model,'accuracy':accuracy,'scaler':scaler}
     dump(trained_model,'trained_model.joblib')
@@ -213,11 +214,13 @@ if(is_trained):
         #check query params for password and get from config yoml
 
         if 'button_status' not in st.session_state:
-            st.session_state.button_status = 'button_active'
+            st.session_state.button_status = 'no_button'
 
-        if 'password' in st.query_params:
+        if 'password' in st.query_params and 'training' not in st.session_state.button_status:
             if(st.query_params['password'] != st.secrets['retrain_pw']):
                 st.session_state.button_status = 'no_button'
+            else:
+                st.session_state.button_status = 'button_active'
                 
 
         # Button to start retraining the model
